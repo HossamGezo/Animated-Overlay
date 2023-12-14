@@ -1,0 +1,103 @@
+// Import All Using Helpers Directory
+@use "helpers/usinghelpers" as *;
+
+// Begining Of The Project
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: Arial;
+  height: 100vh;
+  @include flex(null, null, center, center, null);
+}
+ul li {
+  list-style-type: none;
+}
+button, a {
+  cursor: pointer;
+}
+input, 
+button, 
+textarea,
+select {
+  font-family: inherit;
+}
+.container {
+  width: 80%;
+  padding: 0 10px;
+  margin: 0 auto;
+  @include flex(null, null, center, center, null);
+}
+
+// Begining Of The Project
+.my-btn {
+  width: 300px;
+  height: 50px;
+  padding: 15px 25px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: color(blk-color-02);
+  color: color(wht-color-01);
+  font-weight: bold;
+  @include transition;
+  &:hover {
+    background-color: color(blk-color-01);
+  }
+  &:active {
+    background-color: color(blk-color-02);
+  }
+}
+// Overlay Styling
+.overlay {
+  transform: translateY(-100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: color(overlay-color-08);
+  @include transition;
+  &.open {
+    transform: translateY(0);
+  }
+  @include flex(null, null, center, center, null);
+  &-list {
+    @include flex(column, null, center, center, null);
+    &__item {
+      font-size: 50px;
+      color: color(wht-color-01);
+      margin-bottom: 50px;
+      text-align: center;
+      cursor: pointer;
+      @include transition;
+      transform: translateX(110vw);
+      &:hover {
+        color: color(grn-color-01);
+      }
+      &.open {
+        transform: translateX(0);
+      }
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          transition-delay: ($i * 0.3s);
+        }
+      }
+    }
+  }
+  i {
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    @include transition;
+    &:hover {
+      color: color(red-color-01);
+    }
+  }
+}
